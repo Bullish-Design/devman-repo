@@ -38,7 +38,7 @@ include_python:
   default: true
 
 python_version:
-  type: choice
+  type: str
   help: Python version for devenv
   choices:
     - "3.12"
@@ -46,7 +46,7 @@ python_version:
   default: "3.13"
 
 license:
-  type: choice
+  type: str
   help: License for the generated project
   choices:
     - "MIT"
