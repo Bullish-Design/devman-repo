@@ -1,0 +1,27 @@
+[project]
+name = "{{ project_slug }}"
+version = "0.1.0"
+description = "{{ description }}"
+readme = "README.md"
+requires-python = ">={{ python_version }}"
+{% if author_name -%}
+authors = [{ name = "{{ author_name }}" }]
+{%- endif %}
+dependencies = [
+{% if include_python -%}
+  "typer>=0.12",
+  "pytest>=8",
+{%- endif %}
+]
+
+{% if include_python -%}
+[project.scripts]
+{{ project_slug }} = "{{ package_name }}.cli:app"
+{%- endif %}
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

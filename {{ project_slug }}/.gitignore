@@ -1,0 +1,24 @@
+# devenv/direnv state (kept under .devman/, but still not committed)
+**/.devenv/**
+**/.direnv/**
+
+# Nix / devenv artifacts
+**/*.lock
+**/.env
+**/*.db
+
+# Python
+__pycache__/
+*.py[codz]
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.coverage*
+htmlcov/
+
+# Editors
+.idea/
+.vscode/
+.DS_Store

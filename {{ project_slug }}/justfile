@@ -1,0 +1,13 @@
+set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+
+# Enter the devenv shell via devman
+shell:
+    devman run shell
+
+# Run tests via devenv
+test:
+    devman run test
+
+# Example CLI (if present)
+hello name:
+    devman run hello -- "{{'{{'}}name{{'}}'}}"

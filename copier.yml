@@ -1,0 +1,55 @@
+_answers_file: ".copier-answers.{{ project_slug }}.yml"
+
+# Devman-friendly Copier template for initializing a new repository that stores
+# its devenv + direnv state under .devman/.
+
+project_name:
+  type: str
+  help: Human-readable project name
+  default: "My Devman Project"
+
+project_slug:
+  type: str
+  help: Repository / directory name (kebab-case)
+  default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
+  validator: "^[a-z][a-z0-9-]*$"
+  placeholder: "my-devman-project"
+
+package_name:
+  type: str
+  help: Python import package name (snake_case)
+  default: "{{ project_slug | replace('-', '_') }}"
+  validator: "^[A-Za-z_][A-Za-z0-9_]*$"
+  placeholder: "my_devman_project"
+
+description:
+  type: str
+  help: Short description for the project
+  default: "A devman-managed repository."
+
+author_name:
+  type: str
+  help: Author name (optional)
+  default: ""
+
+include_python:
+  type: bool
+  help: Generate a minimal Python package + Typer CLI
+  default: true
+
+python_version:
+  type: choice
+  help: Python version for devenv
+  choices:
+    - "3.12"
+    - "3.13"
+  default: "3.13"
+
+license:
+  type: choice
+  help: License for the generated project
+  choices:
+    - "MIT"
+    - "Apache-2.0"
+    - "Proprietary"
+  default: "MIT"
